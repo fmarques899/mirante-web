@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     password: [{value: '', disabled: false}, Validators.required]
   })
 
-  constructor(private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.loginForm);
     this.loginService.login(this.loginForm.get('login').value, this.loginForm.get('password').value).subscribe(res => {
-      console.log(res);
+      localStorage.setItem('authorization', res['authorization']);
+      this.router.navigate(['/dashboard']);
+      console.log('Endereçar para dashboard....')
     });
   }
 }
