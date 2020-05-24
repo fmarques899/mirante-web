@@ -1,14 +1,17 @@
 <div class="login-panel">
+    <h3 style="text-align: center;">Autenticação</h3>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div fxLayout="row">
-            <mat-form-field class="example-full-width">
+            <mat-form-field>
                 <mat-label>Login</mat-label>
+                <mat-icon matSuffix>person</mat-icon>
                 <input matInput placeholder="Entre com o seu login" name="login" formControlName="login">
             </mat-form-field>
         </div>
         <div fxLayout="row">
-            <mat-form-field class="example-full-width">
+            <mat-form-field>
                 <mat-label>Senha</mat-label>
+                <mat-icon matSuffix>vpn_key</mat-icon>
                 <input matInput placeholder="Entre com a sua senha" type="password" name="password" formControlName="password">
             </mat-form-field>
         </div>

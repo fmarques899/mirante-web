@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginRoutingModule } from './login-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -16,6 +17,7 @@ import { LoginRoutingModule } from './login-routing.module';
     HttpClientModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     LoginRoutingModule
   ],
   exports: [
