@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { InterceptorModule } from '../interceptor/interceptor.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -11,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    InterceptorModule,
     MatCardModule,
     MatButtonModule
   ],
