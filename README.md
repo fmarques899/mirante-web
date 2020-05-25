@@ -1,4 +1,7 @@
 # Descrição
+
+Para execução fiel aos passos a seguir, é necessário que seja subido primeiro o back-end da aplicação como demonstrado em
+[README do Back-End](https://github.com/fmarques899/desafio-mirante/blob/master/README.md)
  
  Este projeto foi desenvolvido utilizando linguagem Javascript e framework de desenvolvimento Angular 9.
  
