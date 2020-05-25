@@ -1,0 +1,105 @@
+<div mat-dialog class="person-modal">
+    <h3 mat-dialog-title *ngIf="data.action === 'new'">Nova Pessoa</h3>
+    <h3 mat-dialog-title *ngIf="data.action === 'edit'">Editar Pessoa</h3>
+    <!-- {{ personForm.getRawValue() | json }} -->
+    <mat-dialog-content>
+        <form [formGroup]="personForm" (ngSubmit)="save()">
+            <div fxLayout="row">
+                <mat-form-field>
+                    <mat-label>Tipo de Pessoa</mat-label>
+                    <mat-select name="type" formControlName="type">
+                        <mat-option value="1">
+                            Pessoa Física
+                        </mat-option>
+                        <mat-option value="2">
+                            Pessoa Jurídica
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="personForm.get('type').value !== '' ">
+                <div fxLayout="row">
+                    <mat-form-field>
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Nome da pessoa" name="name" formControlName="name">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field *ngIf="personForm.get('type').value == 1">
+                        <mat-label>CPF</mat-label>
+                        <input matInput placeholder="Informe o número do documento" name="docNumber"
+                            formControlName="docNumber">
+                    </mat-form-field>
+                    <mat-form-field *ngIf="personForm.get('type').value == 2">
+                        <mat-label>CNPJ</mat-label>
+                        <input matInput placeholder="Informe o número do documento" name="docNumber"
+                            formControlName="docNumber">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field>
+                        <mat-label>Data de Nascimento</mat-label>
+                        <input matInput [matDatepicker]="picker" name="birthDate" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <mat-chip-list>
+                    <mat-chip [removable]="true" (removed)="removePhone(phone)" *ngFor="let phone of phones">
+                        ({{ phone.ddd }} ) {{ phone.phone }} <mat-icon matChipRemove>close</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+                <div style="background-color: #C2C2C2; margin: 10px">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>DDD</mat-label>
+                            <input matInput placeholder="Informe o número do DDD" formControlName="ddd">
+                        </mat-form-field>
+                    </div>
+                    <div style="width: 60%">
+                        <mat-form-field>
+                            <mat-label>Número</mat-label>
+                            <input matInput placeholder="Informe o número do Telefone" formControlName="phone">
+                        </mat-form-field>
+                    </div>
+                    <div style="width: 60%">
+                        <mat-form-field>
+                            <mat-label>Tipo de Telefone</mat-label>
+                            <mat-select name="phoneType" formControlName="phoneType">
+                                <mat-option value="1">
+                                    Celular
+                                </mat-option>
+                                <mat-option value="2">
+                                    Fixo
+                                </mat-option>
+                                <mat-option value="3">
+                                    Comercial
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button [disabled]="personForm.get('ddd').invalid && personForm.get('phone').invalid" mat-raised-button color="primary" (click)="addPhone()">Adicionar Telefone</button>
+                    </div>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field>
+                        <mat-label>Nome do Pai</mat-label>
+                        <input matInput placeholder="Nome da pessoa" name="fatherName" formControlName="fatherName">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                    <mat-form-field>
+                        <mat-label>Nome da Mãe</mat-label>
+                        <input matInput placeholder="Nome da pessoa" name="motherName" formControlName="motherName">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+    </mat-dialog-actions>
+
+
+</div>

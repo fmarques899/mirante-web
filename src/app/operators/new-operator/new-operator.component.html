@@ -1,20 +1,21 @@
 <div class="modal-operator">
-    <h3>Novo Operador</h3>
+    <h3 *ngIf="data.action === 'new'">Novo Operador</h3>
+    <h3 *ngIf="data.action === 'edit'">Editar Operador</h3>
     <form [formGroup]="operatorsForm">
         <div fxLayout="row">
             <mat-form-field>
                 <mat-label>Nome</mat-label>
                 <input matInput placeholder="Nome do operador" name="name" formControlName="name">
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field *ngIf="data.action === 'new'">
                 <mat-label>Login</mat-label>
                 <input matInput placeholder="Nome do operador" name="login" formControlName="login">
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field *ngIf="data.action === 'new'">
                 <mat-label>Senha</mat-label>
                 <input matInput placeholder="Nome do operador" name="password" formControlName="password"> 
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field *ngIf="data.action === 'new'">
                 <mat-label>Confirmar Senha</mat-label>
                 <input matInput placeholder="Nome do operador" name="passwordConfirm" formControlName="passwordConfirm"> 
             </mat-form-field>

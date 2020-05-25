@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AlertDialogComponent } from './alert-dialog.component';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,8 @@ import { AlertDialogComponent } from './alert-dialog.component';
     LoginModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

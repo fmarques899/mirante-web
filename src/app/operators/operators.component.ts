@@ -13,24 +13,34 @@ export class OperatorsComponent implements OnInit {
 
   public data: OperatorResponse[];
 
-  displayedColumns: string[] = ['id', 'name', 'creationDate'];
+  displayedColumns: string[] = ['id', 'name', 'creationDate', 'actions'];
   constructor(private operatorsService: OperatorsService, private dialog: MatDialog) { }
 
 
   ngOnInit(): void {
-    this.operatorsService.list().subscribe((res: OperatorResponse[]) => {
-      this.data = res;
-    });
+    this.getAllOperatorsList();
   }
 
-  openModalNewOperator(): void {
+  openModalNewOperator(action: string, operator?: any): void {
     const dialogRef = this.dialog.open(NewOperatorComponent, {
       width: '250px',
-      data: {}
+      data: {action: action, operator: operator}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.getAllOperatorsList();
+    });
+  }
+
+  remove(id: number) {
+    this.operatorsService.remove(id).subscribe(res => {
+      this.getAllOperatorsList();
+    })
+  }
+
+  private getAllOperatorsList() {
+    this.operatorsService.list().subscribe((res: OperatorResponse[]) => {
+      this.data = res;
     });
   }
 
