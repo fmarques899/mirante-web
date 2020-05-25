@@ -17,6 +17,7 @@ export class PersonModalComponent implements OnInit {
 
   public phones: PhoneRequest[] = [];
   public personForm = this.fb.group({
+    id: [{value: '', disabled: false}, [Validators.required]],
     name: [{value: '', disabled: false}, [Validators.required]],
     type: [{value: '', disabled: false}, [Validators.required]],
     docNumber: [{value: '', disabled: false}, [Validators.required]],
@@ -55,7 +56,9 @@ export class PersonModalComponent implements OnInit {
         });
       }break;
       case 'edit': {
-        
+        this.personService.edit(this.createPerson()).subscribe(res => {
+          this.dialogRef.close();
+        });
       }
     }
 
@@ -79,6 +82,8 @@ export class PersonModalComponent implements OnInit {
 
   private createPerson() {
     const person = new PersonRequest();
+    
+    person.id = this.personForm.get('id').value;
     person.name = this.personForm.get('name').value;
     person.docNumber = this.personForm.get('docNumber').value;
     person.birthDate = this.personForm.get('birthDate').value;

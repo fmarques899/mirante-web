@@ -5,14 +5,14 @@
             <mat-form-field>
                 <mat-label>Login</mat-label>
                 <mat-icon matSuffix>person</mat-icon>
-                <input matInput placeholder="Entre com o seu login" name="login" formControlName="login">
+                <input matInput placeholder="Entre com o seu login" name="login" formControlName="login" maxlength="15">
             </mat-form-field>
         </div>
         <div fxLayout="row">
             <mat-form-field>
                 <mat-label>Senha</mat-label>
                 <mat-icon matSuffix>vpn_key</mat-icon>
-                <input matInput placeholder="Entre com a sua senha" type="password" name="password" formControlName="password">
+                <input matInput placeholder="Entre com a sua senha" type="password" name="password" formControlName="password" maxlength="16">
             </mat-form-field>
         </div>
         <button mat-stroked-button color="primary" type="submit">Acessar</button>

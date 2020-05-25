@@ -13,11 +13,11 @@
             </mat-form-field>
             <mat-form-field *ngIf="data.action === 'new'">
                 <mat-label>Senha</mat-label>
-                <input matInput placeholder="Nome do operador" name="password" formControlName="password"> 
+                <input matInput placeholder="Nome do operador" name="password" type="password" formControlName="password"> 
             </mat-form-field>
             <mat-form-field *ngIf="data.action === 'new'">
                 <mat-label>Confirmar Senha</mat-label>
-                <input matInput placeholder="Nome do operador" name="passwordConfirm" formControlName="passwordConfirm"> 
+                <input matInput placeholder="Nome do operador" name="passwordConfirm" type="password" formControlName="passwordConfirm"> 
             </mat-form-field>
         </div>
         <div fxLayout="row">

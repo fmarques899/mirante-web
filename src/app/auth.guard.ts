@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (localStorage.getItem('authorization')) {
       this.userService.getUser().subscribe(res => {
-
+        localStorage.setItem('user', JSON.stringify(res));
         switch (this.router.url) {
           case '/dashboard': {
             return true;
@@ -28,13 +28,13 @@ export class AuthGuard implements CanActivate {
             if (res['profileId'] === 1) {
               return true;
             } 
+            this.router.navigate(['/dashboard']);
             return false;
           }
           case 'persons': {
             return true;
           }
         }
-
       });
       return true;
     }
