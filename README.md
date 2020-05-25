@@ -23,3 +23,12 @@
  
  > npm start 
  
+ 
+## 4. Autenticação
+O usuário e senha para autenticação como administrador na aplicação é:
+
+```
+login: mirante01
+senha: 123456
+```
+ 
